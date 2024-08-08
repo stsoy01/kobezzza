@@ -7,6 +7,8 @@
  * console.log(bitGetter.get(1, 1)); // 0
  */
 
+//https://amedovbekmuhamet.netlify.app/blog/intro-array-buffer
+
 
 const createBitGetter = (object) => {
     return {
