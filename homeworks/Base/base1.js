@@ -13,18 +13,21 @@
 const createBitGetter = (object) => {
     return {
         get: function (index1, index2) {
-            return (object[index1]).toString(2).at(-1 - index2)
+            return {
+                fullValue:  (object[index1]).toString(2),
+                getterValue: (object[index1]).toString(2).at(-1 - index2)
+            }
         },
         set: function (index1, index2, newValue) {
             let arr = (object[index1]).toString(2).split('').reverse()
-            arr[index2] = newValue;
-            object[index1] = arr.reverse().join('')
+            arr[index2] = newValue
+            object[index1] = parseInt(arr.reverse().join(''), 2);
         }
     }
 }
-
 const bigGetter = createBitGetter(new Uint8Array([0b1110, 0b1101]))
-console.log(bigGetter.get(0, 1), '11[1]0') // 1110 ----> 1
-console.log(bigGetter.get(1, 1), '11[0]1') // 1101 ----> 0
-console.log(bigGetter.set(0, 1, 0), '11[1->0]0'); //
-console.log(bigGetter.get(0, 1), '11[0]0');    // 0
+
+console.log(bigGetter.get(0, 1)) // 1110 ----> 1 1100
+console.log(bigGetter.get(1, 1)) // 1101 ----> 0
+console.log(bigGetter.set(0, 1, 0)); //
+console.log(bigGetter.get(0, 1));    // 0
