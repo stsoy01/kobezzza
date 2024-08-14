@@ -11,3 +11,9 @@ img.onload = () => {
 
 const imgData = ctx.getImageData(0, 0, c.width, c.height);
 console.log(imgData)
+
+
+// const grayscaled = grayscale('/myImage.jpeg');
+// const inversed = inverse(grayscaled);
+
+// https://inspirnathan.com/posts/105-fix-tainted-canvas-from-cross-origin-error
