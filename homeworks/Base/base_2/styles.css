@@ -19,3 +19,9 @@ div {
   left: 50%;
   margin: 0;
 }
+
+.btn_reset {
+  position: absolute;
+  left: 50%;
+  top: 80%;
+}
