@@ -7,7 +7,7 @@
 // const grayscaled = grayscale('/myImage.jpeg');
 // const inversed = inverse(grayscaled);
 
-/**
+
 
 const btn_inverse = document.getElementById('inverse')
 const btn_grayscale = document.getElementById('grayscale')
@@ -60,13 +60,6 @@ function grayscale() {
   ctx.putImageData(imgData, 0, 0);
 }
 
- */
-
-
-
-
-
-
 // Написать функцию кодирования информации по схеме
 
 
@@ -106,10 +99,8 @@ function encode(data, schema) {
         break;
     }
   }
-  console.log(encodedArray);
+  return encodedArray
 }
-
-const data = encode([2, 3, true, false, 'ab'], schema);
 
 function encodeInteger(biteSizeController, dataValue) {
   if (biteSizeController >= dataValue.toString(2).length) return dataValue.toString(2)
@@ -131,3 +122,5 @@ function encodeAscii(asciiChars) {
 
   throw new Error('Validation schema Error: Bits length is greater than 16 bits')
 }
+
+const data = encode([2, 3, true, false, 'ab'], schema);
