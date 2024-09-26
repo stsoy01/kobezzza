@@ -32,4 +32,4 @@ function LinkedList() {
 }
 
 const list = LinkedList();
-console.log(list.head.next.next)
+
