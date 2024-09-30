@@ -82,8 +82,6 @@ function Queue() {
 
                 currentNode = currentNode.next;
             }
-
-
         }
     }
 }
@@ -92,12 +90,12 @@ const queue = Queue()
 queue.push(10);
 queue.push(11);
 queue.push(12);
-console.log('value: ', queue.pop());
-console.log('value: ', queue.pop());
-console.log('value: ', queue.pop());
-console.log('value: ', queue.pop());
 
-// console.log('this', queue.show());
+// console.log('value: ', queue.pop());
+// console.log('value: ', queue.pop());
+// console.log('value: ', queue.pop());
+// console.log('value: ', queue.pop());
+
 /**
  * Реализовать двустороннюю очередь
  *
@@ -114,3 +112,96 @@ console.log('value: ', queue.pop());
  *    console.log(dequeue.pop());   // Exception
  *    ``
  */
+
+const DeQueue = () => {
+    return {
+        queue: [],
+        push: function (value) {
+            this.queue[this.queue.length] = value;
+        },
+        unshift: function (value) {
+            let step = this.queue.length;
+            this.queue.length++;
+            while (step > 0) {
+                this.queue[step] = this.queue[step - 1]
+                step--;
+            }
+            this.queue[0] = value;
+        },
+        pop: function () {
+            if (!this.queue.length) return undefined;
+
+            const value = this.queue[this.queue.length - 1];
+            this.queue.length--;
+            return value;
+
+        },
+        shift: function () {
+            if (!this.queue.length) return undefined;
+
+            const value = this.queue[0];
+            let step = 0;
+            while (step < this.queue.length) {
+                this.queue[step] = this.queue[step + 1];
+                step++
+            }
+            this.queue.length--;
+            return value;
+        },
+    }
+}
+
+const dequeue = DeQueue()
+dequeue.push(2);
+dequeue.push(10);
+dequeue.push(-32);
+dequeue.unshift(-222);
+dequeue.unshift(666);
+// console.log(dequeue.shift())
+// console.log(dequeue.queue)
+
+
+/**
+ * Реализовать стек на основе типизированного массива заданной длины
+ *
+ *     ```js
+ *    const stack = Stack(Int32Array, 10);
+ *
+ *    stack.push(10);
+ *    stack.push(11);
+ *    stack.push(12);
+ *
+ *    console.log(stack.head);  // 12
+ *
+ *    console.log(stack.pop()); // 12
+ *
+ *    console.log(stack.head);  // 11
+ *
+ *    console.log(stack.pop()); // 11
+ *    console.log(stack.pop()); // 10
+ *    console.log(stack.pop()); // Exception
+ *    ```
+ */
+
+function Stack(typedArray, length) {
+
+    return {
+        _tArray: new typedArray(length),
+
+        push: function (value) {
+
+        },
+
+        pop: function () {
+            for (const prop of this._tArray) {
+
+            }
+            return undefined;
+        }
+    }
+
+
+    // console.log('typedArray', a)
+}
+
+const stack = Stack(Int32Array, 10)
