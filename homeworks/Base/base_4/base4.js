@@ -192,6 +192,8 @@ function Stack(typedArray, length) {
           this.head = _tArray[i] = value;
           return;
         }
+
+        if (i === _tArray.length - 1) throw new Error('Stack is already full');
       }
     },
 
@@ -205,23 +207,20 @@ function Stack(typedArray, length) {
           return rValue
         }
       }
-      throw new Error('Nothing to display');
+      throw new Error('Stack is empty');
 
     }
   }
-
-
-  // console.log('typedArray', a)
 }
 
 const stack = Stack(Int32Array, 10)
-stack.push(10);
-stack.push(11);
-stack.push(12);
-
+stack.push(1);
+stack.push(2);
+stack.push(3);
 console.log(stack.head);  // 12
 console.log(stack.pop()); // 12
 console.log(stack.head);  // 11
 console.log(stack.pop()); // 11
 console.log(stack.pop()); // 10
 console.log(stack.pop()); // Exception
+
