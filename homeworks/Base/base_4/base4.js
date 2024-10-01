@@ -185,21 +185,30 @@ function Stack(typedArray, length) {
 
 
   return {
-    head: 0,
+    head: null,
+    isFull: function () {
+      return _tArray[length - 1]
+    },
+    isEmpty: function () {
+      return _tArray[0] === 0;
+    },
+
     push: function (value) {
+      if (this.isFull()) {
+        throw new Error('Stack is already full');
+      }
       for (let i = 0; i < _tArray.length; i++) {
         if (!_tArray[i]) {
           this.head = _tArray[i] = value;
           return;
         }
-
-        if (i === _tArray.length - 1) throw new Error('Stack is already full');
       }
     },
 
     pop: function () {
-      for (let l = length; l > -1; l--) {
+      if (this.isEmpty()) throw new Error('Stack is empty');
 
+      for (let l = length; l > -1; l--) {
         if (!!_tArray[l]) {
           const rValue = _tArray[l]
           _tArray[l] = 0;
@@ -207,20 +216,20 @@ function Stack(typedArray, length) {
           return rValue
         }
       }
-      throw new Error('Stack is empty');
-
     }
   }
 }
 
 const stack = Stack(Int32Array, 10)
-stack.push(1);
-stack.push(2);
-stack.push(3);
+// stack.push(1);
+// stack.push(2);
+// stack.push(3);
+
 console.log(stack.head);  // 12
-console.log(stack.pop()); // 12
-console.log(stack.head);  // 11
-console.log(stack.pop()); // 11
-console.log(stack.pop()); // 10
-console.log(stack.pop()); // Exception
+// console.log(stack.pop()); // 12
+// console.log(stack.pop()); // 12
+// console.log(stack.head);  // 11
+// console.log(stack.pop()); // 11
+// console.log(stack.pop()); // 10
+// console.log(stack.pop()); // Exception
 
