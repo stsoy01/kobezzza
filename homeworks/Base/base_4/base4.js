@@ -225,7 +225,7 @@ const stack = Stack(Int32Array, 10)
 // stack.push(2);
 // stack.push(3);
 
-console.log(stack.head);  // 12
+// console.log(stack.head);  // 12
 // console.log(stack.pop()); // 12
 // console.log(stack.pop()); // 12
 // console.log(stack.head);  // 11
@@ -233,3 +233,41 @@ console.log(stack.head);  // 12
 // console.log(stack.pop()); // 10
 // console.log(stack.pop()); // Exception
 
+class CompareQueue {
+  compareObject = {
+    '}': '{',
+    ']': '[',
+    ')': '('
+  };
+  strArr = [];
+  //    '{s[w(Y)l]_}'
+
+  compareLetter() {
+    const letter = this.strArr.at(-1)
+    this.strArr.length--;
+    return letter;
+  }
+
+  parseQueue(str) {
+
+    for (const letter of str.split('')) {
+      switch (letter) {
+        case '{':
+        case '[':
+        case '(':
+          this.strArr.push(letter);
+          break;
+        case '}':
+        case ')':
+        case ']':
+          if (this.compareLetter() !== this.compareObject[letter]) return false;
+          break;
+      }
+    }
+    return true;
+  }
+}
+
+
+const cQueue = new CompareQueue();
+console.log(cQueue.parseQueue('{s[w(Y)]}'))
