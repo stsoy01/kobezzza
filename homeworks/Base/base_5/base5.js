@@ -1,4 +1,7 @@
 // реализовать очередь с приоритетом Priority Queue
+//https://habr.com/ru/companies/alfa/articles/651005/
+// как работают вирусы на компе
+//
 
 
 class UserInterface {
