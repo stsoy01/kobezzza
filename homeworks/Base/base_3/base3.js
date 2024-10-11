@@ -14,7 +14,6 @@
  */
 
 class LinkedNode {
-
     value;
     next
 
@@ -25,7 +24,6 @@ class LinkedNode {
 }
 
 class LinkedList {
-
     first;
     last;
 
@@ -106,7 +104,6 @@ const Structure = (arr) => {
         },
         get: function (key) {
             if (typeof this.obj[key] === 'undefined') return;
-
 
             let str = '';
             for (let i = 0; i < this.obj[key].length; i++) {
