@@ -155,11 +155,9 @@ class Solution {
     constructor(nums) {
         this.initialArr = nums;
     }
-
     reset() {
         return this.initialArr;
-    }
-
+    };
     shuffle() {
         let arr = [];
         let random;
@@ -167,21 +165,16 @@ class Solution {
         while (arr.length < this.initialArr.length) {
             random = this.generateRandomNumber();
             if (!arr.includes(this.initialArr[random])) {
-                this.addGeneratedRandomNumber()
+                arr.push(this.initialArr[random]);
+                this.shuffleArr[this.index] = arr[this.index];
+                this.index++;
             }
         }
         return this.shuffleArr;
-    }
-
+    };
     generateRandomNumber() {
         return Math.round(Math.random() * 8);
-    }
-
-    addGeneratedRandomNumber() {
-        arr.push(this.initialArr[random]);
-        this.shuffleArr[this.index] = arr[this.index];
-        this.index++;
-    }
+    };
 }
 
 const solution = new Solution([66, 2, -2, 5, 94, 21, 8, 1, 45]);
