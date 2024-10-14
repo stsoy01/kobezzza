@@ -21,15 +21,15 @@
 //    ```
 
 const obj = {
-  a: {
-    b: [1, 2],
-    '': { c: 2 }
-  },
+    a: {
+        b: [1, 2],
+        '': {c: 2}
+    },
 }
 
 const collapse = (_obj) => {
-  let collapseArr = [];
-  // console.log(Object.entries(_obj)[0])
+    let collapseArr = [];
+    // console.log(Object.entries(_obj)[0])
 }
 
 // console.log(collapse(obj))
@@ -50,30 +50,30 @@ const collapse = (_obj) => {
 
 const isValid = (str) => {
 
-  const checkObj = {
-    '}': '{',
-    ']': '[',
-    ')': '('
-  }
-
-  let validation = true;
-  let stack = []
-
-  for (const letter of str) {
-    switch (letter) {
-      case '{':
-      case '[':
-      case '(':
-        stack.push(letter);
-        break;
-      case '}':
-      case ']':
-      case ')':
-        validation = checkObj[letter] === stack.pop();
-        break;
+    const checkObj = {
+        '}': '{',
+        ']': '[',
+        ')': '('
     }
-  }
-  return validation
+
+    let validation = true;
+    let stack = []
+
+    for (const letter of str) {
+        switch (letter) {
+            case '{':
+            case '[':
+            case '(':
+                stack.push(letter);
+                break;
+            case '}':
+            case ']':
+            case ')':
+                validation = checkObj[letter] === stack.pop();
+                break;
+        }
+    }
+    return validation
 }
 
 // console.log(isValid('(hello{world} and [me])'));  // true
@@ -85,27 +85,27 @@ const isValid = (str) => {
 // Реализовать Priority Queue
 
 function PQueue() {
-  let queue = [];
-  return {
-    push: function (value) {
-      if (!queue.length) {
-        queue[queue.length] = value;
-        return;
-      }
-      for (let i = 0; i < queue.length; i++) {
-        if (queue[i] < value) {
-          queue.length++;
-          queue[i + 1] = value;
+    let queue = [];
+    return {
+        push: function (value) {
+            if (!queue.length) {
+                queue[queue.length] = value;
+                return;
+            }
+            for (let i = 0; i < queue.length; i++) {
+                if (queue[i] < value) {
+                    queue.length++;
+                    queue[i + 1] = value;
+                }
+            }
+        },
+        shift: function () {
+            return
+        },
+        display: function () {
+            return queue
         }
-      }
-    },
-    shift: function () {
-      return
-    },
-    display: function () {
-      return queue
     }
-  }
 }
 
 const pQueue = PQueue()
@@ -122,16 +122,16 @@ console.log(pQueue.display()) // [4,31]
 //Дана строка s, найдите первый неповторяющийся символ в ней и верните его индекс. Если такого символа не существует, верните -1.
 
 const findUniqueLetter = (str) => {
-  const stringHeap = {};
+    const stringHeap = {};
 
-  str.split('').map((el) => !stringHeap[el] ? stringHeap[el] = 1 : stringHeap[el] = -1)
+    str.split('').map((el) => !stringHeap[el] ? stringHeap[el] = 1 : stringHeap[el] = -1)
 
-  for (const letter in stringHeap) {
-    if (stringHeap[letter] === 1) {
-      return letter;
+    for (const letter in stringHeap) {
+        if (stringHeap[letter] === 1) {
+            return letter;
+        }
     }
-  }
-  return -1;
+    return -1;
 
 
 }
@@ -148,41 +148,42 @@ const findUniqueLetter = (str) => {
 
 
 class Solution {
-  initialArr = [];
-  shuffleArr = [];
-  index = 0;
+    initialArr = [];
+    shuffleArr = [];
+    index = 0;
 
-  constructor(nums) {
-    this.initialArr = nums;
-  }
+    constructor(nums) {
+        this.initialArr = nums;
+    }
 
-  reset() {
-    return this.initialArr;
-  }
+    reset() {
+        return this.initialArr;
+    }
 
-  shuffle() {
-    let arr = [];
-    let random;
+    shuffle() {
+        let arr = [];
+        let random;
 
-    while (arr.length < this.initialArr.length) {
-      random = Math.round(Math.random() * 8);
-      if (!arr.includes(this.initialArr[random])) {
+        while (arr.length < this.initialArr.length) {
+            random = this.generateRandomNumber();
+            if (!arr.includes(this.initialArr[random])) {
+                this.addGeneratedRandomNumber()
+            }
+        }
+        return this.shuffleArr;
+    }
 
+    generateRandomNumber() {
+        return Math.round(Math.random() * 8);
+    }
 
-
+    addGeneratedRandomNumber() {
         arr.push(this.initialArr[random]);
         this.shuffleArr[this.index] = arr[this.index];
         this.index++;
-      }
     }
-    console.log(this.shuffleArr)
-  }
-
-  generateRandomNumber() {
-    return Math.floor(Math.random() * this.maxLength)
-  }
 }
 
 const solution = new Solution([66, 2, -2, 5, 94, 21, 8, 1, 45]);
-// console.log(solution.reset());
-// console.log(solution.shuffle())
+console.log(solution.reset());
+console.log(solution.shuffle())
