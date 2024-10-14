@@ -14,6 +14,19 @@
  * console.log(uint8Vector.length); // 2
  */
 
+class Vector {
+    typedArray;
+    capacity;
+
+    constructor(typedArray, {capacity}) {
+        this.typedArray = typedArray;
+        this.capacity = capacity
+    }
+}
+
+const uint8vector = new Vector(Uint8Array, {capacity: 100})
+console.log(uint8vector)
+
 
 // ------------------------------------------*****************------------------------------------------
 // Реализовать класс для описания 3 - х мерной матрицы
@@ -24,6 +37,22 @@
  * matrix.set({x: 1, y: 3, z: 2}, 10);
  * matrix.get({x: 1, y: 3, z: 2});
  */
+
+class Matrix3d {
+
+    x;
+    y;
+    z;
+
+    constructor({x, y, z}) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
+}
+
+const matrix = new Matrix3d({x: 10, y: 10, z: 10});
+console.log(matrix)
 
 // ------------------------------------------*****************------------------------------------------
 // Реализовать класс для создания хэш-таблицы
@@ -43,3 +72,29 @@
  * console.log(map.delete(document)); // 10
  * console.log(map.has(document));    // false
  */
+
+class HashMap {
+    capacity;
+
+    constructor(capacity) {
+        this.capacity = capacity;
+    }
+
+    set(value) {
+
+    };
+
+    get() {
+
+    }
+
+    delete() {
+
+    }
+
+    has() {
+
+    }
+}
+
+const map = new HashMap(120);
